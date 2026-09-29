@@ -1,11 +1,3 @@
-/* =========================================================
-   EXPENSEFLOW
-   Expense Tracker Application
-========================================================= */
-
-
-/* ================= DOM ELEMENTS ================= */
-
 const transactionForm =
     document.getElementById("transactionForm");
 
@@ -94,7 +86,6 @@ const chartEmpty =
     document.getElementById("chartEmpty");
 
 
-/* ================= STATE ================= */
 
 const STORAGE_KEY = "expenseFlowTransactions";
 
@@ -106,15 +97,11 @@ let transactions =
 let editingId = null;
 
 
-/*
-    Selected month for analytics.
-    Initially set to current month.
-*/
+
 
 let selectedDate = new Date();
 
 
-/* ================= INITIALIZATION ================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -128,8 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-/* ================= CURRENT DATE ================= */
 
 function setCurrentDate() {
 
@@ -146,8 +131,6 @@ function setCurrentDate() {
 }
 
 
-/* ================= DEFAULT FORM DATE ================= */
-
 function setDefaultDate() {
 
     const today = new Date();
@@ -157,8 +140,6 @@ function setDefaultDate() {
 
 }
 
-
-/* ================= DATE FORMAT ================= */
 
 function formatDateForInput(date) {
 
@@ -180,8 +161,6 @@ function formatDateForInput(date) {
 }
 
 
-/* ================= CURRENCY ================= */
-
 function formatCurrency(amount) {
 
     return new Intl.NumberFormat(
@@ -196,8 +175,6 @@ function formatCurrency(amount) {
 }
 
 
-/* ================= SAVE DATA ================= */
-
 function saveTransactions() {
 
     localStorage.setItem(
@@ -207,8 +184,6 @@ function saveTransactions() {
 
 }
 
-
-/* ================= FORM SUBMIT ================= */
 
 transactionForm.addEventListener(
     "submit",
@@ -236,8 +211,6 @@ transactionForm.addEventListener(
         const description =
             descriptionInput.value.trim();
 
-
-        /* ================= VALIDATION ================= */
 
         if (!amount || amount <= 0) {
 
@@ -328,9 +301,6 @@ transactionForm.addEventListener(
 
         }
 
-
-        /* ================= ADD ================= */
-
         else {
 
             const newTransaction = {
@@ -375,8 +345,6 @@ transactionForm.addEventListener(
 );
 
 
-/* ================= RESET FORM ================= */
-
 function resetForm() {
 
     transactionForm.reset();
@@ -402,7 +370,6 @@ function resetForm() {
 }
 
 
-/* ================= ERROR ================= */
 
 function showError(message) {
 
@@ -421,8 +388,6 @@ function clearError() {
 
 }
 
-
-/* ================= TOAST ================= */
 
 let toastTimeout;
 
@@ -445,8 +410,6 @@ function showToast(message) {
 }
 
 
-/* ================= RENDER EVERYTHING ================= */
-
 function renderEverything() {
 
     updateSummary();
@@ -461,8 +424,6 @@ function renderEverything() {
 
 }
 
-
-/* ================= SUMMARY ================= */
 
 function updateSummary() {
 
@@ -503,8 +464,6 @@ function updateSummary() {
 
 }
 
-
-/* ================= CATEGORY FILTER ================= */
 
 function populateCategoryFilter() {
 
@@ -552,8 +511,6 @@ function populateCategoryFilter() {
 
 }
 
-
-/* ================= RENDER TRANSACTIONS ================= */
 
 function renderTransactions() {
 
@@ -629,8 +586,6 @@ function renderTransactions() {
 
 }
 
-
-/* ================= TRANSACTION HTML ================= */
 
 function createTransactionHTML(transaction) {
 
@@ -751,8 +706,6 @@ function createTransactionHTML(transaction) {
 }
 
 
-/* ================= CATEGORY ICON ================= */
-
 function getCategoryIcon(category) {
 
     const icons = {
@@ -800,8 +753,6 @@ function getCategoryIcon(category) {
 
 }
 
-
-/* ================= EDIT ================= */
 
 function editTransaction(id) {
 
@@ -859,15 +810,12 @@ function editTransaction(id) {
 }
 
 
-/* ================= CANCEL EDIT ================= */
-
 cancelEdit.addEventListener(
     "click",
     resetForm
 );
 
 
-/* ================= DELETE ================= */
 
 function deleteTransaction(id) {
 
@@ -906,8 +854,6 @@ function deleteTransaction(id) {
 }
 
 
-/* ================= FILTER EVENTS ================= */
-
 typeFilter.addEventListener(
     "change",
     renderTransactions
@@ -919,8 +865,6 @@ categoryFilter.addEventListener(
     renderTransactions
 );
 
-
-/* ================= MONTHLY SUMMARY ================= */
 
 function updateMonthlySummary() {
 
@@ -1020,8 +964,6 @@ function updateMonthlySummary() {
 }
 
 
-/* ================= MONTH NAVIGATION ================= */
-
 previousMonth.addEventListener(
     "click",
     () => {
@@ -1053,8 +995,6 @@ nextMonth.addEventListener(
     }
 );
 
-
-/* ================= CHART ================= */
 
 function drawChart() {
 
@@ -1246,8 +1186,6 @@ function drawChart() {
     );
 
 
-    /* Inner circle */
-
     context.beginPath();
 
     context.arc(
@@ -1263,8 +1201,6 @@ function drawChart() {
 
     context.fill();
 
-
-    /* Center text */
 
     context.fillStyle =
         "#171a24";
@@ -1301,15 +1237,11 @@ function drawChart() {
 }
 
 
-/* ================= WINDOW RESIZE ================= */
-
 window.addEventListener(
     "resize",
     drawChart
 );
 
-
-/* ================= ESCAPE HTML ================= */
 
 function escapeHTML(value) {
 
