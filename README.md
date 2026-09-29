@@ -72,7 +72,7 @@ Clearing the browser's Local Storage will remove the saved transactions.
 ## Project Structure
 
 ```text
-expense-tracker-jithisha/
+expense-tracker-jithishaKV/
 │
 ├── index.html
 ├── style.css
